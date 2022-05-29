@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="col-md-7 offset-md-2"> 
+    <div class="card card-body">
+        <form action="/update/{{trx.id}}" method="POST">
+            <div class="form-group">
+                <label for="id">ID</label>
+                <input type="text" id="id" name="ID" placeholder="ID" value="{{trx.id}}" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <input type="tipo" name="tipo" placeholder="Tipo" value="{{trx.tipo}}" class="form-control" readonly >
+            </div>
+            <div class="form-group">
+                <label for="fecha">Fecha</label>
+                <input type="text" name="fecha" placeholder="Fecha" value="{{trx.fecha}}" class="form-control" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="cod_deposito">Deposito</label>
+                <input type="text" name="cod_deposito" placeholder="Deposito" value="{{trx.cod_deposito}}" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="cod_labo">Laboratorio</label>
+                <input type="text" name="cod_labo" placeholder="Laboratorio" value="{{trx.cod_labo}}" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="cod_parte">Parte</label>
+                <input type="text" name="cod_parte" placeholder="Parte" value="{{trx.cod_parte}}" class="form-control" readonly>
+            </div> 
+            <div class="form-group">
+                <label for="cantidad">Cantidad</label>
+                <input type="text" name="cantidad" placeholder="Cantidad" value="{{trx.cantidad}}" class="form-control" readonly>
+            </div> 
+            <div class="form-group">
+                <label for="cantidad_des">Cant. Desechada</label>
+                <input type="text" name="cantidad_des" placeholder="Cant. Desechada" value="{{trx.cantidad_des}}" class="form-control">
+            </div> 
+            <div class="form-group">
+                <label for="cantidad_util">Cant. Utilizada</label>
+                <input type="text" name="cantidad_util" placeholder="Cant. Utilizada" value="{{trx.cantidad_util}}" class="form-control">
+            </div> 
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-block">  Guardar </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
