@@ -3,7 +3,8 @@ import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
-from config import MAILPASSW, MAILADDR
+from config import MAILPASSW
+from config import MAILADDR
 
 class Alarmas(db.Model):
 

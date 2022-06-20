@@ -14,6 +14,7 @@ olpassword = os.environ['MYSQLONLINE_PASSWORD']
 oldatabase = os.environ['MYSQLONLINE_DB']
 
 MAILPASSW = os.environ['MAILPASSW']
+MAILADDR  = os.environ['MAILADDR']
 
 
 local_uri  = f'mysql://{user}:@{host}/{database}'
