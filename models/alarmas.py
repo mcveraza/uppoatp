@@ -3,7 +3,7 @@ import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
-from config import MAILPASSW
+from config import MAILPASSW, MAILADDR
 
 class Alarmas(db.Model):
 
@@ -54,7 +54,7 @@ class Alarmas(db.Model):
  
        # Login Credentials for sending the mail
        print('antes login')
-       server.login('mc.veraza@gmail.com',MAILPASSW)
+       server.login(MAILADDR,MAILPASSW)
        print('despues login')
        # send the message via the server.
        server.sendmail(msg['From'], msg['To'], msg.as_string())
