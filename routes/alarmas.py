@@ -3,11 +3,21 @@ from flask import Blueprint, jsonify, render_template, request, redirect, url_fo
 from utils.db import db
 #importa la clase Alarmas
 from models.alarmas import Alarmas
+from flask_marshmallow import Marshmallow
 
 
 #para separar en modulos las aplicaciones
 alarmas = Blueprint('alarmas',__name__)
 
+
+ma = Marshmallow(alarmas)
+
+class AlarmasSchema(ma.Schema):
+    class Meta:
+        fields=('id', 'cod_deposito', 'cod_parte', 'usuario','mensaje','estado')
+
+alarma_schema=AlarmasSchema()
+alarma_schema=AlarmasSchema(many=True)
 
 @alarmas.route('/alarmas', methods=["GET"])
 def getAlarmas():

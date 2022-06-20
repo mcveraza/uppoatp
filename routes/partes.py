@@ -2,14 +2,25 @@ from email import utils
 from flask import Blueprint, jsonify, render_template, request, redirect, url_for, flash
 from utils.db import db
 from models.partes import Partes
+from flask_marshmallow import Marshmallow
 
 #para separar en modulos las aplicaciones
 partes = Blueprint('partes',__name__)
 
+ma = Marshmallow(partes)
+
+class PartesSchema(ma.Schema):
+    class Meta:
+        fields=('id', 'cod_parte', 'descripcion','tipo_parte')
+
+parte_schema=PartesSchema()
+parte_schema=PartesSchema(many=True)
+
+
 @partes.route('/partes', methods=["GET"])
 def get():
     qobj = Partes.query.all()
-    return qobj.to_json()
+    return parte_schema.jsonify(qobj)
 
 
 @partes.route('/partes', methods=['POST'])

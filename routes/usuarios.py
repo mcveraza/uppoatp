@@ -4,9 +4,21 @@ from utils.db import db
 from models.usuarios import Usuarios
 from sqlalchemy import text, select, and_, join
 from werkzeug.security import generate_password_hash
+from flask_marshmallow import Marshmallow
 
 #para separar en modulos las aplicaciones
 usuarios = Blueprint('usuarios',__name__)
+
+ma = Marshmallow(usuarios)
+
+class UsuariosSchema(ma.Schema):
+    class Meta:
+        fields=('id', 'codigo', 'nombre', 'email','telefono','password','rol_id')
+
+usuario_schema=UsuariosSchema()
+usuario_schema=UsuariosSchema(many=True)
+
+
 
 @usuarios.route('/')
 def index():
@@ -20,14 +32,14 @@ def get_by_id(self, id):
 @usuarios.route('/usuarios', methods=["GET"])
 def get():
     qobj = Usuarios.query.all()
-    return qobj.to_json()
-
+    return usuario_schema.jsonify(qobj)
 
 
 @usuarios.route('/usuarios/<id>', methods=["GET"])
 def update(id):
     qobj = Usuarios.query.get(id)
     return qobj.to_json()
+    
 
 @usuarios.route('/login', methods=['GET', 'POST'])
 def login():

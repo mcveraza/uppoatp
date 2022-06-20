@@ -11,7 +11,7 @@ from routes.laboratorios import laboratorios
 from flask_sqlalchemy import SQLAlchemy
 from config import DATA_BASE_CONNECTION_URI
 from flask_login import LoginManager, login_user, logout_user, login_required
-
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
