@@ -9,9 +9,9 @@ class Transacciones(db.Model):
     cod_deposito = db.Column(db.String(255))
     cod_labo = db.Column(db.String(255))
     cod_parte = db.Column(db.String(255))
-    cantidad = db.Column(db.Integer)
-    cantidad_des = db.Column(db.Integer)
-    cantidad_util = db.Column(db.Integer)
+    cantidad = db.Column(db.Float)
+    cantidad_des = db.Column(db.Float)
+    cantidad_util = db.Column(db.Float)
 
     #constructor
     def __init__(self, tipo, cod_deposito,cod_labo,cod_parte,cantidad,cantidad_des,cantidad_util):
@@ -22,6 +22,19 @@ class Transacciones(db.Model):
         self.cantidad=cantidad
         self.cantidad_des=cantidad_des
         self.cantidad_util=cantidad_util
+
+
+    def to_json(self):
+        return dict(
+            id=self.id,
+            tipo=self.tipo,
+            cod_deposito=self.cod_deposito,
+            cod_labo=self.cod_labo,
+            cod_parte=self.cod_parte,
+            cantidad=self.cantidad,
+            cantidad_des=self.cantidad_des,
+            cantidad_util=self.cantidad_util
+            )
 
 #crea todas las tablas de las clases
 db.create_all

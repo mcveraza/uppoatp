@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<h1>Alarmas</h1>
+<div class="row">
+    <div class="col-md-7" offset-md-2>
+        <table class=" table table-striped table-bordered bg-white table-sm">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Deposito</td>
+                    <td>Parte</td>
+                    <td>Fecha</td>
+                    <td>Usuario</td>
+                    <td>Mensaje</td>
+                    <td>Estado</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for alm in alarmas %}
+                <tr>
+                    <td>{{alm.id}}</td>
+                    <td>{{alm.cod_deposito}}</td>
+                    <td>{{alm.cod_parte}}</td>
+                    <td>{{alm.fecha}}</td>
+                    <td>{{alm.usuario}}</td>
+                    <td>{{alm.mensaje}}</td>
+                    <td>{{alm.estado}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+
+</div>
+
+{% endblock %}
