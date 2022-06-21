@@ -31,8 +31,11 @@ def get_by_id(self, id):
 
 @usuarios.route('/usuarios', methods=["GET"])
 def get():
-    qobj = Usuarios.query.all()
-    return usuario_schema.jsonify(qobj)
+    try:
+     qobj = Usuarios.query.all()
+     return usuario_schema.jsonify(qobj), 200
+    except Exception as e:
+     return jsonify({"Error": "Invalid Request, please try again."})
 
 
 @usuarios.route('/usuarios/<id>', methods=["GET"])
